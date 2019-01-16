@@ -1,0 +1,23 @@
+
+#input-page-content{
+  display:block;
+  width:100%;
+  height:200px;
+  margin:auto;
+}
+
+
+
+header{
+  background-color:orange;
+}
+
+input,
+ textarea{
+   margin: 0 4px;
+ }
+
+
+#peview{
+  border:2px solid red;
+}
