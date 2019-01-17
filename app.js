@@ -60,7 +60,6 @@ paragraphButton.addEventListener('click', function(){
     var html =   $('#preview-content').html();
     $('#preview-content-print').html(html);
     $('#preview-content p').remove();
-
  });
 
 
