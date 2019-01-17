@@ -6,8 +6,6 @@
   margin:auto;
 }
 
-
-
 header{
   background-color:orange;
 }
@@ -16,19 +14,17 @@ input,
  textarea{
    margin: 0 4px;
  }
-
-
 /* #preview{
   border:2px solid red;
 } */
-
 #prev{
   overflow:auto;
 }
-
-
 #preview{
-
 overflow:auto;
+}
 
+#footer{
+  background-color: lightgray;
+  max-width:100%;
 }
