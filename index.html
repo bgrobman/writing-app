@@ -18,7 +18,7 @@
          <a class="nav-link " href="#contact">Contact</a>
        </li>
        <li class="nav-item">
-         <a class="nav-link " href="preview.html" target="_blank">Preview</a>
+         <a class="nav-link " href="#preview" target="_blank">Preview</a>
        </li>
       </ul>
     </header>
@@ -37,7 +37,7 @@
         <label for="input-page-number" class="h6">Type page number </label>
         <input type="number" id="input-page-number"></div>
 
-          <div class="col-12 mt-3"><!-- paragraph input -->
+          <div class="col-12 mt-3 mb-1"><!-- paragraph input -->
             <div class="container">
                 <div class="row">
                 <div class="col-sm-7 mb-3">
@@ -60,26 +60,31 @@
           <textarea id="comment">
           </textarea>
         </div>
-          <button type="button" class="btn btn-primary btn-lg" id="submit-page">Submit (Page)</button>
+
         </div>
-
-
+      <span class="bg-warning p-1 pt-2">Only submited paragraphs will show in the preview</span>
+      <button type="button" class="btn btn-primary btn-lg ml-1" id="submit-page">Submit (Preview Page)</button>
      </div><!-- row  -->
     </div> <!-- /end main container  -->
 
 
     <!-- preview page -->
-    <div class="container" id="preview">
-      <div class="col" id="prev-book-title"></div><span id="prev-page-title"></span>
-      <div class="col" id="p-c"></div>
+    <div class="" id="preview-content"></div><!-- hidden element that stores all the paragraphs  -->
+
+    <div class="container mt-5 mb-5" id="preview">
+      <div id="auther"></div>
+      <div class="col-12" id="prev-book-title"></div>
+      <div  class="col-12" id="prev-page-title"></div>
+      <div class="col-12" id="preview-content-print"></div>
+      <div id="com"></div>
     </div>
     <!-- /preview end -->
 
-    <div class="container mb-0"><!-- footer  -->
+    <div class="container mb-0 mx-0 "><!-- footer  -->
       <div class="row">
         <div class="col-md-8 order-m-last pl-5">
           <h5 id="contact" class="pt-3">Contact Me:</h5>
-          <ul class="nav flex-column">
+          <ul class="nav flex-column pb-2">
             <li class="nav-item">
               <a class="nav-link" href="https://bgrobman.github.io/my-javascript.github.io/"  target="_blank">My Website</a>
             </li>

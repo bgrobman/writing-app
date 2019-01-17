@@ -13,7 +13,8 @@ const prevBookTitle = document.getElementById('prev-book-title');
 const prevPageTitle = document.getElementById('prev-page-title');
 const prevContent = document.getElementById('prev-content');
 
-let pageContent = document.getElementById('p-c');
+ const pageContent = document.getElementById('preview-content');
+//let pageContent = [];
 let valid = false;
 let prevHtml;
 // function testEmpty(target){
@@ -24,7 +25,7 @@ let prevHtml;
 //   }
 // }
 
-function makeElement(e,content,parent){
+function makeElement(e,content,addAtt,attName){
    var element = document.createElement(e);
    element.textContent = content;
    return element
@@ -33,25 +34,33 @@ function makeElement(e,content,parent){
 
 paragraphButton.addEventListener('click', function(){
   previewParagraph.textContent = '';
-  var p = makeElement('p',paragraph.value);
+  var p = makeElement('p',paragraph.value,'overflow','auto');
   previewParagraph.prepend(p);
-  pageContent.prepend(p);
-  pageContent.style.display = 'none';
   previewParagraph.style.border = '2px solid red';
-
-
-  paragraph.value = '';
+    var c = makeElement('p',paragraph.value);
+    //pageContent.prepend(c);
+   paragraph.value = '';
+   $('#preview-content').append(c);
+   $('#preview-content').hide();
 });
 
 
  pageButton.addEventListener('click',function(){
-   var m = makeElement('h1',bookTitle.value);
-   prevBookTitle.prepend(m);
-    var pt =  makeElement('h3',pageTitle.value);
-    var pn = makeElement('span','Chapter:' + pageNumber.value);
+   $('#preview div h2, #preview div h1, #preview div h5,#preview div h6,#preview div p').remove();
+    var m = makeElement('h1', ' Book Title: ' +  bookTitle.value);
+    prevBookTitle.prepend(m);
+    var pt =  makeElement('h2','Page Title:' +pageTitle.value);
+    var pn = makeElement('h5','Chapter:' + pageNumber.value);
     prevPageTitle.prepend(pt,pn);
-//    prevContent.prepend(pageContent);
-alert('hello');
+    var auther = makeElement('h6','Auther:' + $('#writers-name').val());
+    $('#auther').prepend(auther);
+    var com = makeElement('p','Comment:' + $('#comment').val());
+    $('#com').prepend(com);
+    $('#com').css('border','solid blue 1px');
+    var html =   $('#preview-content').html();
+    $('#preview-content-print').html(html);
+    $('#preview-content p').remove();
+
  });
 
 

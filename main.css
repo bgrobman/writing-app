@@ -18,6 +18,17 @@ input,
  }
 
 
-#peview{
+/* #preview{
   border:2px solid red;
+} */
+
+#prev{
+  overflow:auto;
+}
+
+
+#preview{
+
+overflow:auto;
+
 }
