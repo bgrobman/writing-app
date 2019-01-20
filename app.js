@@ -12,25 +12,39 @@ const allInputs = [bookTitle,pageTitle,pageNumber,paragraph,auther,comment];
 const prevBookTitle = document.getElementById('prev-book-title');
 const prevPageTitle = document.getElementById('prev-page-title');
 const prevContent = document.getElementById('prev-content');
-
- const pageContent = document.getElementById('preview-content');
-//let pageContent = [];
+const pageContent = document.getElementById('preview-content');
+const landing = document.getElementById('landing');
 let valid = false;
 let prevHtml;
-// function testEmpty(target){
-//   if(target.value === ''){
-//    valid = false;
-//    var p = makeElement('p','the element is empty!',target);
-//    target.prepend(p);
-//   }
-// }
+var url = `https://api.airtable.com/v0/appP3yc6hsTO1FLXd/Table%201?api_key=keyZ3s4zJ9nbnOFdZ`;
+
+function writenData(){
+  return  data = {
+    "fields": {
+      "BookTitle": bookTitle.value,
+      "PageNumber": pageNumber.value,
+      "Auther": $('#auther').val(),
+      "PageContent":previewPage.innerHTML
+    }
+  };
+}
 
 function makeElement(e,content,addAtt,attName){
    var element = document.createElement(e);
    element.textContent = content;
    return element
-   //parent.prepend(element);
 }
+
+function postPage(data){
+  return fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  }).then(res => res.json());
+}
+
 
 paragraphButton.addEventListener('click', function(){
   previewParagraph.textContent = '';
@@ -38,7 +52,6 @@ paragraphButton.addEventListener('click', function(){
   previewParagraph.prepend(p);
   previewParagraph.style.border = '2px solid red';
     var c = makeElement('p',paragraph.value);
-    //pageContent.prepend(c);
    paragraph.value = '';
    $('#preview-content').append(c);
    $('#preview-content').hide();
@@ -59,8 +72,28 @@ paragraphButton.addEventListener('click', function(){
     $('#com').css('border','solid blue 1px');
     var html =   $('#preview-content').html();
     $('#preview-content-print').html(html);
+
+    postPage(writenData());
+
     $('#preview-content p').remove();
  });
+
+
+// function retriveData(){
+//   return fetch(url)
+//           .then(res => res.json())
+//           .then(res => conloe.log(res))
+//           .then( (data) => {
+//             data.map(item =>
+//               if(item.records.fields.PageContent === writenData())
+//               landing.innerHTML = item.records.fields.PageContent;
+//             )
+//           })
+// }
+
+
+
+
 
 
 //mm
