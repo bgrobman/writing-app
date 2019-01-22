@@ -85,7 +85,7 @@ paragraphButton.addEventListener('click', function(){
     var pt =  makeElement('h2','Page Title:' +pageTitle.value);
     var pn = makeElement('h5','Chapter:' + pageNumber.value);
     prevPageTitle.prepend(pt,pn);
-    var auther = makeElement('h6','Auther:' + $('#writers-name').val());
+    var auther = makeElement('h4','Auther:' + $('#writers-name').val());
     $('#auther').prepend(auther);
     var com = makeElement('p','Comment:' + $('#comment').val());
     $('#com').prepend(com);
