@@ -13,10 +13,28 @@ const prevBookTitle = document.getElementById('prev-book-title');
 const prevPageTitle = document.getElementById('prev-page-title');
 const prevContent = document.getElementById('prev-content');
 const pageContent = document.getElementById('preview-content');
-const landing = document.getElementById('landing');
-let valid = false;
+let valid = true;
 let prevHtml;
 var url = `https://api.airtable.com/v0/appP3yc6hsTO1FLXd/Table%201?api_key=keyZ3s4zJ9nbnOFdZ`;
+let inputAll = [bookTitle,pageTitle, pageNumber , auther ];
+
+function testEmpty(){
+  valid = true;
+  if( bookTitle.value === ''||auther.value === ''||pageTitle.value === '' || pageNumber.value === ''||pageContent.innerText === ''){
+    valid = false;
+  }
+  // if(bookTitle.value||pageTitle.value||pageNumber.value||auther.value == ''){
+  //   valid = false;
+  // }
+  // inputAll.map((item) =>{
+  //   if(item.innerHTML === ''){
+  //     valid = false;
+  //   }
+  // })
+  if(valid === false){
+      alert('you have not filled out all the data boxes ,therfore the data will not be sent to the database!');
+  }
+}
 
 function writenData(){
   return  data = {
@@ -46,6 +64,7 @@ function postPage(data){
 }
 
 
+
 paragraphButton.addEventListener('click', function(){
   previewParagraph.textContent = '';
   var p = makeElement('p',paragraph.value,'overflow','auto');
@@ -59,6 +78,7 @@ paragraphButton.addEventListener('click', function(){
 
 
  pageButton.addEventListener('click',function(){
+
    $('#preview div h2, #preview div h1, #preview div h5,#preview div h6,#preview div p').remove();
     var m = makeElement('h1', ' Book Title: ' +  bookTitle.value);
     prevBookTitle.prepend(m);
@@ -72,11 +92,13 @@ paragraphButton.addEventListener('click', function(){
     $('#com').css('border','solid blue 1px');
     var html =   $('#preview-content').html();
     $('#preview-content-print').html(html);
-
+     testEmpty();
+    if(valid){
     postPage(writenData());
-
+  }
     $('#preview-content p').remove();
  });
+
 
 
 // function retriveData(){
