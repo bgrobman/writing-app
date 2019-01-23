@@ -33,7 +33,7 @@ function writenData(){
     "fields": {
       "BookTitle": bookTitle.value,
       "PageNumber": pageNumber.value,
-      "Auther": $('#auther').val(),
+      "Auther": $('#writers-name').val(),
       "PageContent":previewPage.innerHTML
     }
   };
