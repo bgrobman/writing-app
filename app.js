@@ -16,21 +16,13 @@ const pageContent = document.getElementById('preview-content');
 let valid = true;
 let prevHtml;
 var url = `https://api.airtable.com/v0/appP3yc6hsTO1FLXd/Table%201?api_key=keyZ3s4zJ9nbnOFdZ`;
-let inputAll = [bookTitle,pageTitle, pageNumber , auther ];
+let inputAll = [bookTitle,pageTitle, pageNumber ,auther ];
 
 function testEmpty(){
   valid = true;
   if( bookTitle.value === ''||auther.value === ''||pageTitle.value === '' || pageNumber.value === ''||pageContent.innerText === ''){
     valid = false;
   }
-  // if(bookTitle.value||pageTitle.value||pageNumber.value||auther.value == ''){
-  //   valid = false;
-  // }
-  // inputAll.map((item) =>{
-  //   if(item.innerHTML === ''){
-  //     valid = false;
-  //   }
-  // })
   if(valid === false){
       alert('you have not filled out all the data boxes ,therfore the data will not be sent to the database!');
   }
@@ -78,7 +70,6 @@ paragraphButton.addEventListener('click', function(){
 
 
  pageButton.addEventListener('click',function(){
-
    $('#preview div h2, #preview div h1, #preview div h5,#preview div h6,#preview div p').remove();
     var m = makeElement('h1', ' Book Title: ' +  bookTitle.value);
     prevBookTitle.prepend(m);
