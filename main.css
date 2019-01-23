@@ -29,7 +29,20 @@ overflow:auto;
   max-width:100%;
 }
 
+
+/* code for preview page */
+html, #body{
+  height: 100%;
+  margin: 0;
+}
+
+.wrapp{
+  min-height: 100%;
+  /* margin-bottom: -50px; */
+}
+
 #footer-2{
+  /* height: 50px; */
   background-color: lightgreen;
   max-width:100%;
 }
