@@ -7,8 +7,16 @@
 }
 
 header{
-  background-color:orange;
+  /* position: fixed;
+  width: 100%;
+  height: 75px;
+  /* background-color: #f00; */
+  padding: 10px;
+  background-color:#555;
+  color:white;
 }
+
+
 
 input,
  textarea{
@@ -34,15 +42,37 @@ overflow:auto;
 html, #body{
   height: 100%;
   margin: 0;
+  /* position: relative; */
+  overflow: auto;
 }
 
+#header-2{
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+  /* position: fixed; */
+  width: 100%;
+  /* height: 75px; */
+  /* background-color: #f00; */
+}
+
+/* .spacer
+{
+    width: 100%;
+    height: 190px;
+} */
+
 .wrapp{
-  min-height: 100%;
-  /* margin-bottom: -50px; */
+  min-height: calc(100vh - 190px);
 }
 
 #footer-2{
   /* height: 50px; */
   background-color: lightgreen;
   max-width:100%;
+}
+
+#header-2 ul li  a:hover,
+header ul li  a:hover {
+  color:#f1f1f1;
 }

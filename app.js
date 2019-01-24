@@ -34,6 +34,7 @@ function writenData(){
       "BookTitle": bookTitle.value,
       "PageNumber": pageNumber.value,
       "Auther": $('#writers-name').val(),
+      "PageTitle" : pageTitle.value,
       "PageContent":previewPage.innerHTML
     }
   };
@@ -73,7 +74,7 @@ paragraphButton.addEventListener('click', function(){
    $('#preview div h2, #preview div h1, #preview div h5,#preview div h6,#preview div p').remove();
     var m = makeElement('h1', ' Book Title: ' +  bookTitle.value);
     prevBookTitle.prepend(m);
-    var pt =  makeElement('h2','Page Title:' +pageTitle.value);
+    var pt =  makeElement('h2','Page Title:' + pageTitle.value);
     var pn = makeElement('h5','Chapter:' + pageNumber.value);
     prevPageTitle.prepend(pt,pn);
     var auther = makeElement('h4','Auther:' + $('#writers-name').val());
@@ -81,9 +82,10 @@ paragraphButton.addEventListener('click', function(){
     var com = makeElement('p','Comment:' + $('#comment').val());
     $('#com').prepend(com);
     $('#com').css('border','solid blue 1px');
+    $('#com').css('padding','20px');
     var html =   $('#preview-content').html();
     $('#preview-content-print').html(html);
-     testEmpty();
+    testEmpty();
     if(valid){
     postPage(writenData());
   }
