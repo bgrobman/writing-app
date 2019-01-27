@@ -8,19 +8,29 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <header class="mt-1 mb-4 p-4 ">
+    <header class="mt-1 mb-5  sticky-top pt-4">
       <h1 class="text-center"> Welcome To The Writers Online Styling Tool</h1>
-      <ul class="nav justify-content-end mt-3 pt-2">
-       <li class="nav-item">
-         <a class="nav-link active" href="" target="_blank">About</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link " href="#contact">Contact</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link " href="preview.html" target="_blank">Read(books)</a>
-       </li>
-      </ul>
+
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon "></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="preview.html" target="_blank">Read(books)</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </header>
 
     <div class="container" id="main"><!--  main container  -->
@@ -41,9 +51,10 @@
             <div class="container">
                 <div class="row">
                 <div class="col-sm-7 mb-3">
-                  <label for="input-page-content" class="h6">Write a pargraph <br>then click the submit button</label>
+                  <label for="input-page-content" class="h6 mt-1">Write a pargraph, then hit the <em>"Enter"</em> button</label>
                   <textarea id="input-page-content">
-                  </textarea><button id="submit-paragraph">Submit(paragraph)</button>
+                  </textarea>
+                  <!-- <button id="submit-paragraph">Submit(paragraph)</button> -->
                 </div>
               <div class="col-5 pt-3 mt-5" id="prev">
             </div>
