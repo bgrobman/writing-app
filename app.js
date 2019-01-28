@@ -5,7 +5,8 @@ const paragraph = document.getElementById('input-page-content');
 const auther = document.getElementById('writers-name');
 const comment = document.getElementById('comment');
 // const paragraphButton = document.getElementById('submit-paragraph');
-const pageButton = document.getElementById('submit-page');
+const pageButton = document.getElementById('preview-page');
+const submitButton = document.getElementById('submit-page');
 const previewParagraph = document.getElementById('prev');
 const previewPage = document.getElementById('preview');
 const allInputs = [bookTitle,pageTitle,pageNumber,paragraph,auther,comment];
@@ -13,11 +14,18 @@ const prevBookTitle = document.getElementById('prev-book-title');
 const prevPageTitle = document.getElementById('prev-page-title');
 const prevContent = document.getElementById('prev-content');
 const pageContent = document.getElementById('preview-content');
+const modalName = document.getElementById('modal-name');
+const modalPerCode = document.getElementById('modal-code');
+const modalMasterCode = document.getElementById('modal-master-code');
+const modalSubmitCode = document.getElementById('model-submit-code');
+let secure = false;
 let valid = true;
 let ex = true;
 let prevHtml;
+let printedPage = false;
 var url = `https://api.airtable.com/v0/appP3yc6hsTO1FLXd/Table%201?api_key=keyZ3s4zJ9nbnOFdZ`;
-let inputAll = [bookTitle,pageTitle, pageNumber ,auther ];
+let inputAll = [bookTitle,pageTitle, pageNumber ,auther ,  previewParagraph , comment];
+var goodData ;
 
 function retriveData(){
   return fetch(url)
@@ -79,6 +87,8 @@ function postPage(data){
   }).then(res => res.json());
 }
 
+previewPage.style.display = 'none';
+
 paragraph.addEventListener("keyup", function(e){
       if(e.keyCode == 13){
         previewParagraph.textContent = '';
@@ -92,11 +102,23 @@ paragraph.addEventListener("keyup", function(e){
   }
  });
 
-
-
+ modalSubmitCode.addEventListener('click',function(){
+   fetch(`https://api.airtable.com/v0/appPRJdIgsvsXiASr/Table%201?api_key=keyZ3s4zJ9nbnOFdZ`)
+    .then(res => res.json())
+    .then((data) => {
+       data.records.map((item) => {
+         console.log(item.fields.MasterCode);
+        // item.fields.Name === modalName.value && item.fields.PersonalCode === modalPerCode.value ||
+        if( item.fields.MasterCode === modalMasterCode.value){
+          secure = true;
+        }
+      });
+    });
+   });
 
  pageButton.addEventListener('click',function(){
    $('#preview div h2, #preview div h1, #preview div h5,#preview div h6,#preview div p,#preview div h4').remove();
+    previewPage.style.display = '';
     var m = makeElement('h1', ' Book Title: ' +  bookTitle.value);
     prevBookTitle.prepend(m);
     var pt =  makeElement('h2','Page Title:' + pageTitle.value);
@@ -112,8 +134,29 @@ paragraph.addEventListener("keyup", function(e){
     $('#preview-content-print').html(html);
     testFull();
     testEmpty();
+     goodData = writenData();
     if(valid){
-    postPage(writenData());
-  }
-    $('#preview-content p').remove();
+      printedPage = true;
+    // postPage(writenData());
+    }
+
+    // $('#preview-content p').remove();
+    inputAll.map((item) => {item.value = '';});
+    previewParagraph.textContent = '';
  });
+
+submitButton.addEventListener('click',function(){
+  if(secure){
+     if(printedPage){
+
+       postPage(goodData);
+       alert('the data has been sent!');
+       goodData = '';
+    }else{
+      alert('the previed page did not have all the boxes full!');
+    }
+  }else{
+      alert('You have not submited the correct code!');
+    }
+
+});
