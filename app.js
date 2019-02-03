@@ -46,7 +46,7 @@ function testFull(){
   .then((data) => {
     ex = true;
     data.records.map(item => {
-      if(item.fields.BookTitle === bookTitle.value && item.fields.PageNumber === pageNumber.value ){
+      if(item.fields.BookTitle.toLowerCase() === bookTitle.valuetoLowerCase() && item.fields.PageNumber === pageNumber.value ){
          valid = false;
          ex = false;
         }
