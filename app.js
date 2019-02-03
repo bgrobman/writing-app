@@ -102,6 +102,7 @@ paragraph.addEventListener("keyup", function(e){
  });
 
  modalSubmitCode.addEventListener('click',function(){
+   $('#close-modal').click();
    fetch(`https://api.airtable.com/v0/appPRJdIgsvsXiASr/Table%201?api_key=keyZ3s4zJ9nbnOFdZ`)
     .then(res => res.json())
     .then((data) => {
