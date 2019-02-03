@@ -107,13 +107,15 @@ paragraph.addEventListener("keyup", function(e){
     .then(res => res.json())
     .then((data) => {
        data.records.map((item) => {
-         console.log(item.fields.MasterCode);
         if( item.fields.MasterCode === modalMasterCode.value){
           secure = true;
         }
       });
       if(secure === false){
         alert('You have not submited the correct autherazation code!');
+      }else{
+        console.log('good code');
+        $('#sign-in').hide();
       }
     });
    });
