@@ -4,7 +4,6 @@ const pageNumber = document.getElementById('input-page-number');
 const paragraph = document.getElementById('input-page-content');
 const auther = document.getElementById('writers-name');
 const comment = document.getElementById('comment');
-// const paragraphButton = document.getElementById('submit-paragraph');
 const pageButton = document.getElementById('preview-page');
 const submitButton = document.getElementById('submit-page');
 const previewParagraph = document.getElementById('prev');
@@ -43,7 +42,7 @@ function testEmpty(){
 }
 
 function testFull(){
-  retriveData()
+ return  retriveData()
   .then((data) => {
     ex = true;
     data.records.map(item => {
@@ -108,16 +107,18 @@ paragraph.addEventListener("keyup", function(e){
     .then((data) => {
        data.records.map((item) => {
          console.log(item.fields.MasterCode);
-        // item.fields.Name === modalName.value && item.fields.PersonalCode === modalPerCode.value ||
         if( item.fields.MasterCode === modalMasterCode.value){
           secure = true;
         }
       });
+      if(secure === false){
+        alert('You have not submited the correct autherazation code!');
+      }
     });
    });
 
  pageButton.addEventListener('click',function(){
-   $('#preview div h2, #preview div h1, #preview div h5,#preview div h6,#preview div p,#preview div h4').remove();
+   $('#preview div h2, #preview div h1, #preview div h5,#preview div h6,#preview div p, #preview div h4').remove();
     previewPage.style.display = '';
     var m = makeElement('h1', ' Book Title: ' +  bookTitle.value);
     prevBookTitle.prepend(m);
@@ -132,23 +133,23 @@ paragraph.addEventListener("keyup", function(e){
     $('#com').css('padding','20px');
     var html =   $('#preview-content').html();
     $('#preview-content-print').html(html);
-    testFull();
+    goodData = writenData();
     testEmpty();
-     goodData = writenData();
+     testFull()
+     .then((data) => {
+       inputAll.map((item) => {item.value = '';});
+       previewParagraph.textContent = '';
+       paragraph.value = '';
+     });
     if(valid){
       printedPage = true;
-    // postPage(writenData());
     }
-
-    // $('#preview-content p').remove();
-    inputAll.map((item) => {item.value = '';});
-    previewParagraph.textContent = '';
+    $('#preview-content').html('');
  });
 
 submitButton.addEventListener('click',function(){
   if(secure){
      if(printedPage){
-
        postPage(goodData);
        alert('the data has been sent!');
        goodData = '';
@@ -156,7 +157,7 @@ submitButton.addEventListener('click',function(){
       alert('the previed page did not have all the boxes full!');
     }
   }else{
-      alert('You have not submited the correct code!');
+      alert('You have not submited the correct autherazation code!');
     }
-
+// }
 });
