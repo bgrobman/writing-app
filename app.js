@@ -42,20 +42,21 @@ function testEmpty(){
 }
 
 function testFull(){
- return  retriveData()
-  .then((data) => {
-    ex = true;
-    data.records.map(item => {
-      if(item.fields.BookTitle.toLowerCase() === bookTitle.valuetoLowerCase() && item.fields.PageNumber === pageNumber.value ){
-         valid = false;
-         ex = false;
-        }
-  });
-       if(ex === false){
-         alert('this page already excists in the database!');
+ return retriveData()
+ .then((data) => {
+   ex = true;
+   data.records.map(item => {
+     if(  $('#preview #prev-book-title h1').html().toLowerCase() === ' Book Title: '+ item.fields.BookTitle.toLowerCase() && $('#preview #prev-page-title h5').html() === 'Chapter:'+ item.fields.PageNumber){
+       valid = false;
+        ex = false;
        }
+ });
+      if(ex === false){
+        alert('this page already excists in the database!');
+      }
 });
 }
+
 
 function writenData(){
   return  data = {
@@ -138,12 +139,12 @@ paragraph.addEventListener("keyup", function(e){
     $('#preview-content-print').html(html);
     goodData = writenData();
     testEmpty();
-     testFull()
-     .then((data) => {
+     // testFull()
+     // .then((data) => {
        inputAll.map((item) => {item.value = '';});
-       previewParagraph.textContent = '';
+        previewParagraph.textContent = '';
        paragraph.value = '';
-     });
+     // });
     if(valid){
       printedPage = true;
     }
@@ -151,6 +152,8 @@ paragraph.addEventListener("keyup", function(e){
  });
 
 submitButton.addEventListener('click',function(){
+  testFull();
+  if(valid){
   if(secure){
      if(printedPage){
        postPage(goodData);
@@ -162,5 +165,5 @@ submitButton.addEventListener('click',function(){
   }else{
       alert('You have not submited the correct autherazation code!');
     }
-// }
+ }else{alert('bad')};
 });
