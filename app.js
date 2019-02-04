@@ -17,6 +17,7 @@ const modalName = document.getElementById('modal-name');
 const modalPerCode = document.getElementById('modal-code');
 const modalMasterCode = document.getElementById('modal-master-code');
 const modalSubmitCode = document.getElementById('model-submit-code');
+const modalContent = document.getElementById('modal-content');
 const editPage = document.getElementById('edit-page');
 let secure = false;
 let valid = true;
@@ -113,10 +114,21 @@ paragraph.addEventListener("keyup", function(e){
         alert('You have not submited the correct autherazation code!');
       }else{
         console.log('good code');
+        alert('You have signed in!');
         $('#sign-in').hide();
       }
     });
+    $('#modal-name').val('');
+    $('#modal-code').val('');
+    modalMasterCode.value = '';
    });
+
+modalContent.addEventListener("keyup", function(e){
+      if(e.keyCode == 13){
+        $('#model-submit-code').click();
+        $('#close-modal').click();
+      }
+});
 
  pageButton.addEventListener('click',function(){
    $('#preview div h2, #preview div h1, #preview div h5,#preview div h6,#preview div p, #preview div h4').remove();
