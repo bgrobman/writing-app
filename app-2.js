@@ -26,7 +26,7 @@ button.addEventListener('click',() => {
     .then((data) => {
      var html = '<select class="custom-select" id="inputGroup-2" aria-label="search for books in database"> <option>Select Page number</option>';
       data.records.map(item => {
-        if(item.fields.BookTitle === $('#inputGroup').val()){
+        if(item.fields.BookTitle.toLowerCase() === $('#inputGroup').val().toLowerCase()){
            html += '<option>' + item.fields.PageNumber + '</option>';
           }
 
