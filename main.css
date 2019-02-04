@@ -46,7 +46,10 @@ overflow:auto;
   color:#f1f1f1;
 }
 
-
+#submit-page,
+#edit-page{
+  display:inline;
+}
 
 /* code for preview page */
 html, #body{

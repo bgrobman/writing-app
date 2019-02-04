@@ -47,12 +47,11 @@ function testFull(){
    .then((data) => {
      ex = true;
      data.records.map(item => {
-       if(  $('#preview #prev-book-title h1').html() === ' Book Title: '+ item.fields.BookTitle  && $('#preview #prev-page-title h5').html() === 'Chapter:'+ item.fields.PageNumber){
+       if(  $('#preview #prev-book-title h1').text().toLowerCase() === ' book title: '+ item.fields.BookTitle.toLowerCase()  && $('#preview #prev-page-title h5').html() === 'Chapter:'+ item.fields.PageNumber){
          valid = false;
           ex = false;
          }
    });
-
   });
 }
 
@@ -160,25 +159,29 @@ submitButton.addEventListener('click',function(){
         alert(' You did not fill all the input boxes!');
       }
     }else{
-      alert('this page already excists in the database!');
-      }
+      alert('This page already exsits!');
+    }
    }else{
      alert('You have not signed in!');
    }
 });
 });
 
-//  editPage.addEventListener('click',function(){
-//   if(secure){
-//     testFull()
-//     .then((data) => {
-//      if(ex === false){
-//       alert('edit');
-//      }else{
-//        alert('This Page does not excist in the database!');
-//      }
-//     });
-// }else{
-//     alert('You have not signed in!');
-//   }
-// });
+ editPage.addEventListener('click',function(){
+  if(secure){
+   if(printedPage){
+    testFull()
+    .then((data) => {
+     if(ex === false){
+      postPage(goodData);
+     }else{
+       alert('This Page does not exist in the database!');
+     }
+    });
+  }else{
+    alert(' You did not fill all the input boxes!');
+  }
+}else{
+    alert('You have not signed in!');
+  }
+});
