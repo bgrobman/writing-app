@@ -17,6 +17,7 @@ const modalName = document.getElementById('modal-name');
 const modalPerCode = document.getElementById('modal-code');
 const modalMasterCode = document.getElementById('modal-master-code');
 const modalSubmitCode = document.getElementById('model-submit-code');
+const editPage = document.getElementById('edit-page');
 let secure = false;
 let valid = true;
 let ex = true;
@@ -51,9 +52,7 @@ function testFull(){
           ex = false;
          }
    });
-        if(ex === false){
-          alert('this page already excists in the database!');
-        }
+
   });
 }
 
@@ -151,8 +150,8 @@ paragraph.addEventListener("keyup", function(e){
 submitButton.addEventListener('click',function(){
   testFull()
   .then((data) => {
-    if(ex){
     if(secure){
+     if(ex){
        if(printedPage){
          postPage(goodData);
          alert('the data has been sent!');
@@ -161,10 +160,25 @@ submitButton.addEventListener('click',function(){
         alert(' You did not fill all the input boxes!');
       }
     }else{
-        alert('You have not signed in!');
+      alert('this page already excists in the database!');
       }
    }else{
-     alert('bad');
+     alert('You have not signed in!');
    }
 });
 });
+
+//  editPage.addEventListener('click',function(){
+//   if(secure){
+//     testFull()
+//     .then((data) => {
+//      if(ex === false){
+//       alert('edit');
+//      }else{
+//        alert('This Page does not excist in the database!');
+//      }
+//     });
+// }else{
+//     alert('You have not signed in!');
+//   }
+// });
