@@ -117,10 +117,10 @@ paragraph.addEventListener("keyup", function(e){
         alert('You have signed in!');
         $('#sign-in').hide();
       }
-    });
+    })
+    .then(data => {modalMasterCode.value = '';} );
     $('#modal-name').val('');
     $('#modal-code').val('');
-    modalMasterCode.value = '';
    });
 
 modalContent.addEventListener("keyup", function(e){

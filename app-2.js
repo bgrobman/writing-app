@@ -9,7 +9,6 @@ function retriveData(){
 }
 
 
-
 retriveData()
 .then((data) => {
   var html = '<select class="custom-select" id="inputGroup" aria-label="search for books in database"><option>Select Book</option>';
@@ -36,14 +35,12 @@ button.addEventListener('click',() => {
 });
 });
 
-
-
 buttonSearch.addEventListener('click',() => {
    $('#landing').html('');
   retriveData()
   .then((data) => {
     data.records.map(item => {
-      if(item.fields.BookTitle === $('#inputGroup').val() && item.fields.PageNumber === $('#inputGroup-2').val()){
+      if(item.fields.BookTitle.toLowerCase() === $('#inputGroup').val().toLowerCase() && item.fields.PageNumber === $('#inputGroup-2').val()){
           var html = item.fields.PageContent;
         }
     $('#landing').prepend(html);
