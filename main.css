@@ -51,6 +51,12 @@ overflow:auto;
   display:inline;
 }
 
+#preview-content-print p:first-letter{
+   text-transform: capitalize;
+}
+
+
+
 /* code for preview page */
 html, #body{
   height: 100%;

@@ -93,9 +93,9 @@ paragraph.addEventListener("keyup", function(e){
         var p = makeElement('p',paragraph.value,'overflow','auto');
         previewParagraph.prepend(p);
         previewParagraph.style.border = '2px solid red';
-          var c = makeElement('p',paragraph.value);
-         paragraph.value = '';
+        var c = makeElement('p',paragraph.value);
          $('#preview-content').append(c);
+          paragraph.value = '';
          $('#preview-content').hide();
   }
  });
@@ -134,12 +134,13 @@ modalContent.addEventListener("keyup", function(e){
    $('#preview div h2, #preview div h1, #preview div h5,#preview div h6,#preview div p, #preview div h4').remove();
     previewPage.style.display = '';
     var m = makeElement('h1', ' Book Title: ' +  bookTitle.value);
-    prevBookTitle.prepend(m);
-    var pt =  makeElement('h2','Page Title:' + pageTitle.value);
+    prevBookTitle.prepend(m)
+    var pt =  makeElement('h2','Page Title: ' + pageTitle.value);
     var pn = makeElement('h5','Chapter:' + pageNumber.value);
     prevPageTitle.prepend(pt,pn);
-    var auther = makeElement('h4','Auther:' + $('#writers-name').val());
+    var auther = makeElement('h4','Auther: ' + $('#writers-name').val());
     $('#auther').prepend(auther);
+    $('#preview div h1, #preview div h2, #preview div h4').css("text-transform", "capitalize");
     var com = makeElement('p','Comment:' + $('#comment').val());
     $('#com').prepend(com);
     $('#com').css('border','solid blue 1px');
@@ -148,10 +149,9 @@ modalContent.addEventListener("keyup", function(e){
     $('#preview-content-print').html(html);
     goodData = writenData();
     testEmpty();
-     inputAll.map((item) => {item.value = '';});
-      previewParagraph.textContent = '';
-     paragraph.value = '';
-
+    inputAll.map((item) => {item.value = '';});
+    previewParagraph.textContent = '';
+    paragraph.value = '';
     if(valid){
       printedPage = true;
     }

@@ -37,7 +37,7 @@
         </nav>
       </header>
 
-          <div class="container" id="main"><!--  main container  -->
+          <div class="container mb-2" id="main"><!--  main container  -->
             <div class="row">
               <div class="col-sm-4">
                 <label for="input-title" class="h6">Type Book title</label>
@@ -78,13 +78,16 @@
 
         <span class="bg-warning p-1 pt-2">Only signed in authers , and only previewed pages will be submited to the database </span>
           <a class="nav-link btn btn-primary btn-lg ml-1 mt-2"  id="preview-page">Preview Page</a>
+
+
+
        </div><!-- row  -->
       </div> <!-- /end main container  -->
 
 
     <!-- preview page -->
-    <div class="" id="preview-content"></div><!-- hidden element that stores all the paragraphs  -->
-    <div class="container mt-3 mb-1" id="preview">
+   <div  id="preview-content"></div><!-- hidden element that stores all the paragraphs  -->
+     <div class="container mt-3 mb-1" id="preview">
       <div id="auther"></div>
       <div class="col-12" id="prev-book-title"></div>
       <div  class="col-12" id="prev-page-title"></div>
@@ -92,8 +95,11 @@
       <div id="com"></div>
     </div>
     <!-- /preview end -->
-    <button class="nav-link btn btn-primary btn-lg ml-4 mt-3 mb-2"  id="submit-page">Submit To Database</button>
-    <button class="nav-link btn btn-primary btn-lg ml-4 mt-3 mb-2"  id="edit-page">Edit Exsisting Page</button>
+
+    <div class="container">
+      <button class="nav-link btn btn-primary btn-lg mt-3 mb-2"  id="submit-page">Submit To Database</button>
+      <button class="nav-link btn btn-primary btn-lg ml-4 mt-3 mb-2"  id="edit-page">Edit Exsisting Page</button>
+    </div>
 
 
     <div class="container mb-0 mx-0" id="footer"><!-- footer  -->
