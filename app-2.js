@@ -8,7 +8,6 @@ function retriveData(){
          .then(res => res.json())
 }
 
-
 retriveData()
 .then((data) => {
   var html = '<select class="custom-select" id="inputGroup" aria-label="search for books in database"><option>Select Book</option>';
