@@ -12,7 +12,9 @@ retriveData()
 .then((data) => {
   var html = '<select class="custom-select" id="inputGroup" aria-label="search for books in database"><option>Select Book</option>';
    data.records.map(item =>{
+     //if(){
      html += '<option>' + item.fields.BookTitle + '</option>';
+   //}
    });
    html += '</select>';
  $('#search').prepend(html);

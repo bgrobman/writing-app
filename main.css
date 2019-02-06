@@ -75,11 +75,14 @@ html, #body{
   /* background-color: #f00; */
 }
 
-/* .spacer
-{
-    width: 100%;
-    height: 190px;
-} */
+option,h1,h2,h4{
+  text-transform: capitalize;
+}
+
+#preview-content-print p:first-letter{
+ text-transform: capitalize;
+}
+
 
 .wrapp{
   min-height: calc(100vh - 190px);
