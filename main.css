@@ -75,7 +75,8 @@ html, #body{
   /* background-color: #f00; */
 }
 
-option,h1,h2,h4{
+option,h1,h2,h4,
+#inputGroup{
   text-transform: capitalize;
 }
 
